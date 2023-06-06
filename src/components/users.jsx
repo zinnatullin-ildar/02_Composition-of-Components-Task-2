@@ -1,11 +1,11 @@
 import User from './user';
 
-const Users = ({ ...props }) => {
+const Users = ({ users, onDelete }) => {
 
     return (
         <>
             <table className="table">
-                <User users={props.users} onDelete={props.onDelete} />
+                <User users={users} onDelete={onDelete} />
             </table>
         </>
     );

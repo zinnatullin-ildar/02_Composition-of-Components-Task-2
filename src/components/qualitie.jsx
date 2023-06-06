@@ -1,12 +1,10 @@
-const Qualitie = ({ ...props }) => {
+const Qualitie = ({ color, name }) => {
 
     return (
-        <>
-            <span
-                className={`badge m-1 bg-${props.color}`}>
-                {props.name}
-            </span>
-        </>
+        <span
+            className={`badge m-1 bg-${color}`}>
+            {name}
+        </span>
     )
 }
 
