@@ -1,14 +1,11 @@
 import { useState } from 'react';
-import api from '../api';
 import Qualitie from './qualitie';
 import Bookmark from './bookmark';
 import { v4 as uuid } from 'uuid';
 
-const User = ({ users, onDelete }) => {
-    // const [users, setUsers] = useState(api.users.fetchAll());
-
-    let status = users.map(user => user.bookmark);
+const User = ({ users, onDelete, status }) => {
     const [isBookmark, setBookmark] = useState(status);
+    // console.log(status);
 
     const handleToggleBookmark = () => {
         setBookmark(!isBookmark);
@@ -43,16 +40,14 @@ const User = ({ users, onDelete }) => {
                         <td >{user.completedMeetings}</td>
                         <td >{user.rate}</td>
                         <td >
-                            <button onClick={() =>
-                                handleToggleBookmark(user._id)}>
+                            <button onClick={() => handleToggleBookmark}>
                                 <Bookmark status={status} />
                             </button>
                         </td>
                         <td>
                             <button
                                 className='btn btn-danger btn-sm m-2'
-                                onClick={() =>
-                                    onDelete(user._id)}>
+                                onClick={() => onDelete(user._id)}>
                                 Delete
                             </button>
                         </td>
