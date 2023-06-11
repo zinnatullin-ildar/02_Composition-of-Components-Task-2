@@ -1,16 +1,8 @@
-import { useState } from 'react';
 import Qualitie from './qualitie';
 import Bookmark from './bookmark';
 import { v4 as uuid } from 'uuid';
 
-const User = ({ users, onDelete, status }) => {
-    const [isBookmark, setBookmark] = useState(status);
-    // console.log(status);
-
-    const handleToggleBookmark = () => {
-        setBookmark(!isBookmark);
-        // console.log(isBookmark);
-    }
+const User = ({ users, onDelete, onToggle }) => {
 
     return (
         <>
@@ -40,13 +32,10 @@ const User = ({ users, onDelete, status }) => {
                         <td >{user.completedMeetings}</td>
                         <td >{user.rate}</td>
                         <td >
-                            <button onClick={() => handleToggleBookmark}>
-                                <Bookmark status={status} />
-                            </button>
+                            <Bookmark id={user._id} status={user.bookmark} onToggle={onToggle} />
                         </td>
                         <td>
-                            <button
-                                className='btn btn-danger btn-sm m-2'
+                            <button className='btn btn-danger btn-sm m-2'
                                 onClick={() => onDelete(user._id)}>
                                 Delete
                             </button>
