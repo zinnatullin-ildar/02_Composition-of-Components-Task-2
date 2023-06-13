@@ -23,16 +23,20 @@ const User = ({ users, onDelete, onToggle }) => {
                         <th scope="row">{user.name}</th>
                         <td >
                             {user.qualities.map((qualitie) =>
-                                <Qualitie key={uuid()}
+                                <Qualitie
+                                    key={uuid()}
                                     color={qualitie.color}
                                     name={qualitie.name} />
                             )}
                         </td>
                         <td >{user.profession.name}</td>
                         <td >{user.completedMeetings}</td>
-                        <td >{user.rate}</td>
+                        <td >{user.rate} / 5</td>
                         <td >
-                            <Bookmark id={user._id} status={user.bookmark} onToggle={onToggle} />
+                            <Bookmark
+                                id={user._id}
+                                status={user.bookmark}
+                                onToggle={onToggle} />
                         </td>
                         <td>
                             <button className='btn btn-danger btn-sm m-2'
